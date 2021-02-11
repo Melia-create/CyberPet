@@ -33,22 +33,33 @@ class CyberPet {
             console.log(this.name, "'s thirst is quenched!")
             return this;
         }
-
     }
 
-    sleep(){
-        if (this.isSleeping){
-        console.log (this.name, "'s currently sleeping, don't disturb them!")
-        this.energy = this.energy + 10;
-        this.hunger = this.hunger + 3;
-        this.thirst = this.thirst + 3;
+    play() {
+        if (this.bored > 4 & this.energy > 4) {
+            console.log(this.name, "is playing and having fun!")
+        this.bored = this.bored - 5;
+        this.thirst = this.thirst + 5;
+        this.hunger = this.hunger + 5;
+        this.energy = this.energy - 4;
         return this;
-        } else 
-        console.log(this.name, "'s awake and wants to play!")
+    } else {
+        console.log(this.name, "'s tired from all the playing!")
     }
 
-    checkStatus(){
-        console.log ("Name:", this.name, "Happiness:", this.happiness, "Energy", this.energy, "Hunger:", this.hunger, "Thirst:", this.thirst, "Boredom:", this.bored)
+    sleep() {
+        if (this.isSleeping) {
+            console.log(this.name, "'s currently sleeping, don't disturb them!")
+            this.energy = this.energy + 10;
+            this.hunger = this.hunger + 3;
+            this.thirst = this.thirst + 3;
+            return this;
+        } else
+            console.log(this.name, "'s awake and wants to play!")
+    }
+
+    checkStatus() {
+        console.log("Name:", this.name, "Happiness:", this.happiness, "Energy", this.energy, "Hunger:", this.hunger, "Thirst:", this.thirst, "Boredom:", this.bored)
     }
 }
 
