@@ -39,3 +39,7 @@ selectCat.addEventListener("click", () => {
     checkStatus.style.display = "block"
     petName.textContent = `${P.name}`;
 });
+
+giveFood.addEventListener("click", () => {
+    statusBar.textContent = P.eat();
+});

@@ -1,7 +1,7 @@
 class CyberPet {
     constructor(name) {
         this.name = name;
-        this.hunger = 40;
+        this.hunger = 50;
         this.thirst = 50;
         this.happiness = 50;
         this.bored = 50;
@@ -10,10 +10,11 @@ class CyberPet {
     }
 
     eat() {
-        if (this.hunger <= 40) {
-            console.log(this.name, `is feeling hungry, this is making them grumpy and lethargic! You should feed`, this.name);
-            this.happiness = this.happiness - 10;
-            this.energy = this.energy - 10
+        if (this.hunger > 4) {
+            console.log(this.name, "is enjoying the food you've given them");
+            this.happiness = this.happiness + 5;
+            this.energy = this.energy + 5;
+            this.hunger = this.hunger - 5;
             return this;
         } else {
             console.log(this.name, "is full!")
@@ -22,10 +23,11 @@ class CyberPet {
     }
 
     drink() {
-        if (this.thirst <= 40) {
-            console.log(this.name, `is feeling thirsty, this is making them grumpy and lethargic! You should feed`, this.name);
-            this.happiness = this.happiness - 10;
-            this.energy = this.energy - 10
+        if (this.thirst > 4) {
+            console.log(this.name, "is lapping up the water!");
+            this.happiness = this.happiness + 5;
+            this.energy = this.energy + 5;
+            this.thirst = this.thirst - 5;
             return this;
         } else {
             console.log(this.name, "'s thirst is quenched!")
@@ -36,15 +38,17 @@ class CyberPet {
 
     sleep(){
         if (this.isSleeping){
-        this.energy = this.energy +10;
-        console.log (this.name, "'s currently sleeping, their energy is replenishing")
+        console.log (this.name, "'s currently sleeping, don't disturb them!")
+        this.energy = this.energy + 10;
+        this.hunger = this.hunger + 3;
+        this.thirst = this.thirst + 3;
         return this;
         } else 
         console.log(this.name, "'s awake and wants to play!")
     }
 
     checkStatus(){
-        console.log ("Name", this.name, "Happiness:", )
+        console.log ("Name:", this.name, "Happiness:", this.happiness, "Energy", this.energy, "Hunger:", this.hunger, "Thirst:", this.thirst, "Boredom:", this.bored)
     }
 }
 
@@ -72,7 +76,3 @@ class Cat extends CyberPet {
 const Bob = new Dog("Bob");
 let Hoppy = new Rabbit("Hoppy");
 let Roly = new Cat("Roly");
-
-Bob.eat().drink().sleep()
-Hoppy.sleep();
-console.log(Bob)
