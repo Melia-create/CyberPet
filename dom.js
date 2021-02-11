@@ -19,7 +19,23 @@ checkStatus.style.display = "none"
 selectDog.addEventListener("click", () => {
     P = new Dog (prompt("What is your Dog's name going to be?"));
     methodContainer.style.display = "block"
+    petContainer.style.display = "none"
     checkStatus.style.display = "block"
     petName.textContent = `${P.name}`;
+});
 
-})
+selectRabbit.addEventListener("click", () => {
+    P = new Rabbit (prompt("What is your Rabbit's name going to be?"));
+    methodContainer.style.display = "block"
+    petContainer.style.display = "none"
+    checkStatus.style.display = "block"
+    petName.textContent = `${P.name}`;
+});
+
+selectCat.addEventListener("click", () => {
+    P = new Cat (prompt("What is your Cat's name going to be?"));
+    methodContainer.style.display = "block"
+    petContainer.style.display = "none"
+    checkStatus.style.display = "block"
+    petName.textContent = `${P.name}`;
+});
