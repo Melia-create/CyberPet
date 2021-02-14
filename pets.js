@@ -6,57 +6,42 @@ class CyberPet {
         this.happiness = 50;
         this.bored = 50;
         this.energy = 50;
-        this.isSleeping = true;
+        this.isSleeping = false;
+        this.intervalID = 0;
     }
 
-    eat() {
-        if (this.hunger > 4) {
-            this.happiness = this.happiness + 5;
-            this.energy = this.energy + 5;
-            this.hunger = this.hunger - 5;
-            return `${this.name} devoured the food!`
-        } else {
-            return`${this.name} is full!`
-        }
+    
+
+    giveFood() {
+        this.hunger -= 5;
+        this.thirst += 3;
+        this.bored += 2;
+    }   
+        
+        
+    
+
+    giveDrink() {
+        this.thirst -= 5;
+        this.hunger += 3;
     }
 
-    drink() {
-        if (this.thirst > 4) {
-            this.happiness = this.happiness + 5;
-            this.energy = this.energy + 5;
-            this.thirst = this.thirst - 5;
-            return `${this.name} is lapping up the water!`
-        } else {
-            return `${this.name}'s thirst is quenched!`
-        }
-
-
-    }
-
-    sleep(){
+    sleeping(){
         if (this.isSleeping){
-        this.energy = this.energy + 10;
-        this.hunger = this.hunger + 3;
-        this.thirst = this.thirst + 3;
-        return `${this.name} is currently sleeping!`
-        } else 
-        return `${this.name} is awake and wants to play!`
+            this.energy ++;
+            this.hunger ++;
+            this.thirst ++;
+        }
     }
 
     play(){
-        if (this.bored > 4 & this.energy > 4){
-            this.bored = this.bored - 5;
-            this.energy = this.energy - 5;
-            this.thirst = this.thirst + 5
-            this.hunger = this.hunger + 5
-            return `${this.name} is playing.`
-        } else {
-            return `${this.name} is tired from all the playing!`
-        }
+        this.energy--; 
+        this.bored += 5;
+
     }
 
     checkStatus(){
-        console.log ("Name:", this.name, "Happiness:", this.happiness, "Energy", this.energy, "Hunger:", this.hunger, "Thirst:", this.thirst, "Boredom:", this.bored)
+        return `Name: ${this.name}, Happiness: ${this.happiness}, Energy: ${this.energy}, Hunger: ${this.hunger}, Thirst: ${this.thirst}, Boredom: ${this.bored}`;
     }
 }
 
@@ -84,3 +69,19 @@ class Cat extends CyberPet {
 const Bob = new Dog("Bob");
 let Hoppy = new Rabbit("Hoppy");
 let Roly = new Cat("Roly");
+
+
+
+function alive(cyberPet){
+    cyberPet.intervalID = setInterval(()=>{
+        if (cyberPet.play == true || cyberPet.giveDrink == true || cyberPet.giveFood == true) {
+            clearInterval(cyberPet.intervalID);
+        } else {
+            cyberPet.sleeping();
+            console.log(cyberPet);
+        }
+    }, 3000)
+};
+
+console.log(Bob);
+alive(Bob)

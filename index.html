@@ -12,27 +12,40 @@
 <body>
     <h1 id="petname">Choose your Cyberpet!</h1>
 
+    <div id="petimgs">
+        <img src="img/Bunny.png" id="rabbitimg">
+        <img src="img/Dog.png" id="dogimg">
+        <img src="img/Cat.png" id="catimg">
+
+    </div>
+
     <div id="petcontainer">
         <button type=button id="rabbitbtn">Rabbit</button>
         <button type=button id="dogbtn">Dog</button>
         <button type=button id="catbtn">Cat</button>
     </div>
 
-    <div id="petimg"></div>
 
     <div id="methodscontainer">
-        <button id ="feedbtn">Feed</button>
-        <button id ="drinkbtn">Drink</button>
-        <button id ="playbtn">Play</button>
-        <button id ="sleepbtn">Sleep</button>
-        <button id ="statusbtn">Check Status</button>
-
+        <button id="feedbtn">Feed</button>
+        <button id="drinkbtn">Drink</button>
+        <button id="playbtn">Play</button>
+        <button id="sleepbtn">Sleep</button>
     </div>
 
-    <div id="statusbar"></div>
+    <div id="progressbars">
+        <div>Hunger</div>
+        <progress id="hungerbar" max="100" value="50">50%</progress>
+        <div>Thirst</div>
+        <progress id="thirstbar" max="100" value="50"> 50%</progress>
+        <div>Energy</div>
+        <progress id="energybar" max="100" value="50"> 50%</progress>
+        <div>Boredom</div>
+        <progress id="boredbar" max="100" value="50"> 50%</progress>
+    </div>
 
 
-    
+
     <script src="pets.js"></script>
     <script src="dom.js"></script>
 </body>
